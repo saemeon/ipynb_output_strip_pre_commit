@@ -9,3 +9,12 @@ repos:
     rev: 22.10.0
     hooks:
       - id: black
+  - repo: local
+    hooks:
+      - id: notebook-strip-output
+        name: notebook-strip-output
+        files: \.ipynb$
+        stages: [commit]
+        language: system
+        entry: python3 check_jupyter_notebook_output_strip.py
+        verbose: True
