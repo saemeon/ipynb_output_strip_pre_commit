@@ -1,0 +1,14 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "ipynb-output-strip-pre-commit-hooks"
+version = "0.1.1"
+description = "pre-commit hooks to enforce empty outputs and metadata in notebooks"
+readme = "README.md"
+keywords = ["pre-commit", "ipynb", "jupyter"]
+requires-python = ">=3.8"
+
+[project.scripts]
+ipynb-output-strip-check = "hooks.check_ipynb_output_strip:main"
