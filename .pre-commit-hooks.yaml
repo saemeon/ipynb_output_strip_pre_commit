@@ -1,7 +1,7 @@
 # Jupyter notebooks
 - id: ipynb-output-strip-check
   name: ipynb-output-strip-check
-  description: check if notebook outputs and metadata are empty
+  description: check if notebook outputs and metadata in staging area are empty
   files: \.ipynb$
   stages: [commit]
   language: python
