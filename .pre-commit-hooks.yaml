@@ -1,11 +1,11 @@
 # Jupyter notebooks
-- id: ipynb-output-strip-check
-  name: ipynb-output-strip-check
+- id: check-ipynb-output-strip
+  name: check-ipynb-output-strip
   description: check if notebook outputs and metadata in staging area are empty
   files: \.ipynb$
   stages: [commit]
   language: python
-  entry: ipynb-output-strip-check
+  entry: check-ipynb-output-strip
 - id: ipynb-output-strip
   name: ipynb-output-strip
   description: strip all outputs and metadata from notebooks. This also removes the output of the notebook in the workingdir
