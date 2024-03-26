@@ -11,4 +11,4 @@ keywords = ["pre-commit", "ipynb", "jupyter"]
 requires-python = ">=3.8"
 
 [project.scripts]
-ipynb-output-strip-check = "hooks.check_ipynb_output_strip:main"
+check-ipynb-output-strip = "hooks.check_ipynb_output_strip:main"
