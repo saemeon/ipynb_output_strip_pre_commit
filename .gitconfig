@@ -1,8 +1,8 @@
 [filter "ipynb-output-strip"]
 	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
 [filter "ipynb_filter"]
-	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
-    # clean = python ipynb_filter.py --clean %f
+	# clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
+    clean = python ipynb_filter.py --clean %f
     smudge = python ipynb_filter.py --smudge %f
 [filter "keyfilter"]
     clean = python keyfilter.py --clean %f

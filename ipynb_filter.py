@@ -64,8 +64,12 @@ def smudge(filename):
 
 def clean():
     logger.warning("in ipynb filter clean")
-    logger.warning(sys.stdin.read())
-    sys.stdout.write(sys.stdin.read())
+    nb_incoming = json.loads(sys.stdin.read())
+    logger.warning(nb_incoming)
+    for cell_incoming in nb_incoming["cells"]:
+        cell_incoming["outputs"] = []
+    logger.warning(nb_incoming)
+    sys.stdout.write(json.dumps(nb_incoming))
 
 
 if __name__ == "__main__":
