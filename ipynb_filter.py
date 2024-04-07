@@ -28,6 +28,7 @@ def usage():
 def smudge(filename):
     logger.warning(f"in ipynb filter smudge for {filename}")
     nb_incoming = json.loads(sys.stdin.read())
+    logger.warning(nb_incoming)
     for cell_incoming in nb_incoming["cells"]:
         cell_incoming["outputs"] = [
             {"name": "stdout", "output_type": "stream", "text": ["blablablab\n"]}
