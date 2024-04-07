@@ -25,40 +25,56 @@ def usage():
     )
 
 
-# def smudge():
-
-
 def smudge(filename):
-    # notebook_staged = json.loads(sys.stdin.read())
-    # filename = "test.ipynb"
-    with open(filename, "r") as file:
-        nb_local = json.loads(file.read())
-    nb_incoming = json.loads(git.Repo().git.show(f":{filename}"))
-    print(nb_local)
-    print(nb_incoming)
-    for cell_local, cell_incoming in zip(nb_local["cells"], nb_incoming["cells"]):
-        # tbd: check which cells to insert output
-        # if cell_incoming["source"] == cell_local["source"]:
-        #     cell_incoming["outputs"] = cell_local["outputs"]
-
-        cell_incoming["outputs"] = cell_local["outputs"]
-
-    print(nb_local)
-    print(nb_incoming)
+    logger.warning(f"in ipynb filter smudge for {filename}")
+    nb_incoming = json.loads(sys.stdin.read())
+    for cell_incoming in nb_incoming["cells"]:
+        cell_incoming["outputs"] = [
+            {"name": "stdout", "output_type": "stream", "text": ["blablablab\n"]}
+        ]
+    logger.warning(nb_incoming)
     sys.stdout.write(json.dumps(nb_incoming))
 
 
+# def smudge(filename):
+#     # filename = "test.ipynb"
+#     # with open(filename, "r") as file:
+#     #     nb_local = json.loads(file.read())
+#     nb_incoming = json.loads(sys.stdin.read())
+
+#     # nb_incoming = json.loads(git.Repo().git.show(f":{filename}"))
+#     # print(nb_local)
+#     print(nb_incoming)
+#     # for cell_local, cell_incoming in zip(nb_local["cells"], nb_incoming["cells"]):
+#     for cell_incoming in nb_incoming["cells"]:
+#         # tbd: check which cells to insert output
+#         # if cell_incoming["source"] == cell_local["source"]:
+#         #     cell_incoming["outputs"] = cell_local["outputs"]
+
+#         # cell_incoming["outputs"] = cell_local["outputs"]
+#         cell_incoming["outputs"] = [
+#             {"name": "stdout", "output_type": "stream", "text": ["blablablab\n"]}
+#         ]
+
+# # print(nb_local)
+# print(nb_incoming)
+# sys.stdout.write(json.dumps(nb_incoming))
+
+
 def clean():
-    pass
+    logger.warning("in ipynb filter clean")
+    logger.warning(sys.stdin.read())
+    sys.stdout.write(sys.stdin.read())
 
 
 if __name__ == "__main__":
     print(sys.argv)
+    logger.warning(sys.argv)
     if sys.argv[1] == "--smudge":
         filename = sys.argv[2]
-        print(filename)
         smudge(filename)
     elif sys.argv[1] == "--clean":
+        filename = sys.argv[2]
         clean()
     else:
         usage()
