@@ -8,4 +8,4 @@ repos:
     rev: bedbd7195fd63d3f6e95c91f420245ca85b2adc5
     hooks:
       - id: check-ipynb-output-strip
-      - id: ipynb-output-strip
+      # - id: ipynb-output-strip

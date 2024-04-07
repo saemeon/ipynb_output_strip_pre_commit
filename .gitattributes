@@ -1,1 +1,2 @@
 *.ipynb filter=ipynb-output-strip
+*.ipynb merge=nbdev-merge
