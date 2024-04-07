@@ -1,4 +1,4 @@
 # *.ipynb filter=ipynb-output-strip
-# *.ipynb filter=ipynb_filter
-*.ipynb filter=keyfilter
+*.ipynb filter=ipynb_filter
+# *.ipynb filter=keyfilter
 *.ipynb merge=nbdev-merge
