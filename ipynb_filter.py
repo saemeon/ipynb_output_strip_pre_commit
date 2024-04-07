@@ -26,14 +26,14 @@ def usage():
 
 
 def smudge(filename):
-    logger.warning(f"in ipynb filter smudge for {filename}")
+    logger.info(f"in ipynb filter smudge for {filename}")
     nb_incoming = json.loads(sys.stdin.read())
-    logger.warning(nb_incoming)
+    logger.info(nb_incoming)
     for cell_incoming in nb_incoming["cells"]:
         cell_incoming["outputs"] = [
             {"name": "stdout", "output_type": "stream", "text": ["blablablab\n"]}
         ]
-    logger.warning(nb_incoming)
+    logger.info(nb_incoming)
     sys.stdout.write(json.dumps(nb_incoming))
 
 
@@ -63,12 +63,12 @@ def smudge(filename):
 
 
 def clean():
-    logger.warning("in ipynb filter clean")
+    logger.info("in ipynb filter clean")
     nb_incoming = json.loads(sys.stdin.read())
     logger.warning(nb_incoming)
     for cell_incoming in nb_incoming["cells"]:
         cell_incoming["outputs"] = []
-    logger.warning(nb_incoming)
+    logger.info(nb_incoming)
     sys.stdout.write(json.dumps(nb_incoming))
 
 
