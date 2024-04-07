@@ -9,6 +9,6 @@ description = "pre-commit hooks to enforce empty outputs and metadata in noteboo
 readme = "README.md"
 keywords = ["pre-commit", "ipynb", "jupyter"]
 requires-python = ">=3.8"
-
+dependencies = ["gitpython"]
 [project.scripts]
 check-ipynb-output-strip = "hooks.check_ipynb_output_strip:main"
