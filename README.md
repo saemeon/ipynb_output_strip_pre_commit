@@ -107,6 +107,13 @@ This command adds the following entry to your $GIT_DIR/config file, thus forcing
     path = ../.gitconfig
 
 
+  ```mermaid
+    sequenceDiagram
+    Working Directory->>Staging Area: git add: use nbconvert to clean notebook outputs
+    Staging Area->>Gitlab Repo: commit & push
+    Gitlab Repo->>Staging Area: fetch
+    Staging Area->> Working Directory: merge (or pull): use nbdev to merge
+  ```
 
  
 
