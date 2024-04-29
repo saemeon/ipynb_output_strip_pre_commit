@@ -1,17 +1,16 @@
-"""Pre-commit hook to check if a committed notebook only has empty metadata and output cells.."""
+#!/usr/bin/env python
+"""Pre-commit hook to check if a committed notebook only has empty metadata and output cells."""
 
 from __future__ import annotations
 
 import argparse
-import git
 import json
 import logging
 from typing import Sequence
 
+import git
+
 logger = logging.getLogger(__name__)
-
-
-repo = git.Repo()
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -21,23 +20,27 @@ def main(argv: Sequence[str] | None = None) -> int:
     retval = 0
     for filename in args.filenames:
         try:
-            notebook = json.loads(repo.git.show(f":{filename}"))
+            notebook = json.loads(git.Repo().git.show(f":{filename}"))
             for cell in notebook["cells"]:
                 try:
                     if cell["metadata"] != {}:
                         retval += 1
-                        logger.warning("found cell with nonempty metadata.")
+                        logger.warning(
+                            f"found cell with nonempty metadata in {filename}."
+                        )
                     if cell["outputs"] != []:
                         retval += 1
-                        logger.warning("found cell with nonempty output.")
+                        logger.warning(
+                            f"found cell with nonempty output in {filename}."
+                        )
                 except KeyError:
                     pass
 
         except ValueError as exc:
-            print(f"{filename}: Failed to json decode ({exc})")
+            logger.exception(f"{filename}: Failed to json decode ({exc})")
             retval = 1
     return retval
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    exit(main())
