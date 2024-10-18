@@ -1,11 +1,5 @@
 repos:
-  - repo: https://github.com/fastai/nbdev
-    rev: 2.2.10
-    hooks:
-      - id: nbdev_clean
-      # - id: nbdev_export
   - repo: https://github.com/saemeon/ipynb_output_strip_pre_commit
     rev: bedbd7195fd63d3f6e95c91f420245ca85b2adc5
     hooks:
       - id: check-ipynb-output-strip
-      # - id: ipynb-output-strip

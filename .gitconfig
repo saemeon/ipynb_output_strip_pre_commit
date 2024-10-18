@@ -1,9 +1,5 @@
-[filter "ipynb-output-strip"]
-	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
 [filter "ipynb_filter"]
 	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
-    # clean = python ipynb_filter.py --clean %f
-    # smudge = python ipynb_filter.py --smudge %f
-[merge "nbdev-merge"]
+[merge "ipynb_merge"]
 	name = resolve conflicts with nbdev_fix
 	driver = nbdev_merge %O %A %B %P
